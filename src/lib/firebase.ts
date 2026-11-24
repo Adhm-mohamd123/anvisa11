@@ -6,7 +6,7 @@ import firebaseConfig from '../../firebase-applet-config.json';
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 export const auth = getAuth(app);
-auth.languageCode = 'pt';
+auth.languageCode = 'pt-BR';
 export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
 
@@ -24,7 +24,13 @@ export function formatErrorPT(error: unknown, fallback: string): string {
   if (lower.includes('auth/unauthorized-domain')) {
     return 'Este domínio não está autorizado para autenticação. Adicione-o nas configurações do Firebase.';
   }
-  if (lower.includes('auth/network-request-failed') || lower.includes('offline')) {
+  if (lower.includes('auth/user-disabled')) {
+    return 'Esta conta de usuário foi desativada no sistema de autenticação.';
+  }
+  if (lower.includes('auth/too-many-requests')) {
+    return 'Muitas tentativas seguidas. Aguarde alguns instantes e tente novamente.';
+  }
+  if (lower.includes('auth/network-request-failed') || lower.includes('offline') || lower.includes('unavailable')) {
     return 'Falha de conexão com a rede. Verifique sua internet e tente novamente.';
   }
   if (lower.includes('permission-denied') || lower.includes('missing or insufficient permissions')) {
@@ -33,7 +39,7 @@ export function formatErrorPT(error: unknown, fallback: string): string {
   if (lower.includes('quota exceeded')) {
     return 'Limite diário de uso da base de dados excedido. Tente novamente mais tarde.';
   }
-  if (raw.trim().startsWith('{') && raw.includes('"operationType"')) {
+  if ((raw.trim().startsWith('{') && raw.includes('"operationType"')) || lower.startsWith('firebase:')) {
     return fallback;
   }
 

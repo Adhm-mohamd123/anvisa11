@@ -72,7 +72,7 @@ export const FIELD_BOUNDS = {
 export function getStatusLabel(status: RegistrationStatus): string {
   switch (status) {
     case 'valid':
-      return '';
+      return 'Registro válido';
     case 'expired':
       return 'Registro expirado';
     case 'suspended':
@@ -169,6 +169,51 @@ export function normalizeDateInput(value: string): string {
     return `${year}-${month}-${day}`;
   }
   return trimmed;
+}
+
+const COUNTRY_PT_BR: Record<string, string> = {
+  brazil: 'Brasil',
+  brasil: 'Brasil',
+  'united states': 'Estados Unidos',
+  'united states of america': 'Estados Unidos',
+  usa: 'Estados Unidos',
+  us: 'Estados Unidos',
+  france: 'França',
+  italy: 'Itália',
+  germany: 'Alemanha',
+  spain: 'Espanha',
+  portugal: 'Portugal',
+  'united kingdom': 'Reino Unido',
+  uk: 'Reino Unido',
+  england: 'Inglaterra',
+  egypt: 'Egito',
+  japan: 'Japão',
+  'south korea': 'Coreia do Sul',
+  korea: 'Coreia do Sul',
+  china: 'China',
+  india: 'Índia',
+  canada: 'Canadá',
+  mexico: 'México',
+  argentina: 'Argentina',
+  chile: 'Chile',
+  colombia: 'Colômbia',
+  morocco: 'Marrocos',
+  switzerland: 'Suíça',
+  netherlands: 'Países Baixos',
+  belgium: 'Bélgica',
+  poland: 'Polônia',
+  turkey: 'Turquia',
+  australia: 'Austrália',
+  israel: 'Israel',
+  'united arab emirates': 'Emirados Árabes Unidos',
+  uae: 'Emirados Árabes Unidos',
+  'saudi arabia': 'Arábia Saudita',
+};
+
+export function localizeCountryPTBR(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) return 'Brasil';
+  return COUNTRY_PT_BR[trimmed.toLowerCase()] ?? trimmed;
 }
 
 export function formatDateBR(isoDate: string): string {

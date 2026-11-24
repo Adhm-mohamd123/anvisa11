@@ -4,6 +4,7 @@ import { fetchCosmeticById } from '../services/cosmeticsService';
 import { formatErrorPT } from '../lib/firebase';
 import {
   formatDateBR,
+  localizeCountryPTBR,
   type CosmeticProduct,
   type RegistrationStatus,
 } from '../types/cosmetic';
@@ -13,31 +14,6 @@ interface ProductDetailViewProps {
   productId: string;
   initialProduct?: CosmeticProduct | null;
   onBack: () => void;
-}
-
-const COUNTRY_PT_BR: Record<string, string> = {
-  brazil: 'Brasil',
-  brasil: 'Brasil',
-  'united states': 'Estados Unidos',
-  usa: 'Estados Unidos',
-  us: 'Estados Unidos',
-  france: 'França',
-  italy: 'Itália',
-  germany: 'Alemanha',
-  spain: 'Espanha',
-  'united kingdom': 'Reino Unido',
-  uk: 'Reino Unido',
-  egypt: 'Egito',
-  japan: 'Japão',
-  'south korea': 'Coreia do Sul',
-  morocco: 'Marrocos',
-  switzerland: 'Suíça',
-};
-
-function localizeCountryPTBR(raw: string): string {
-  const trimmed = raw.trim();
-  if (!trimmed) return 'Brasil';
-  return COUNTRY_PT_BR[trimmed.toLowerCase()] ?? trimmed;
 }
 
 function localizeManufacturerPTBR(raw: string): string {
@@ -65,16 +41,31 @@ function localizeDescriptionPTBR(raw?: string): string {
       'Produto Profissional para Cuidados Capilares',
     ],
     [/\bHair Care Product\b/gi, 'Produto para Cuidados Capilares'],
+    [/\bSkin Care Product\b/gi, 'Produto para Cuidados com a Pele'],
     [/\bCosmetic Product\b/gi, 'Produto Cosmético'],
     [/\bHair Treatment\b/gi, 'Tratamento Capilar'],
     [/\bHair Mask\b/gi, 'Máscara Capilar'],
+    [/\bFace Cream\b/gi, 'Creme Facial'],
+    [/\bBody Lotion\b/gi, 'Loção Corporal'],
     [/\bProfessional Use\b/gi, 'Uso Profissional'],
     [/\bMade in Brazil\b/gi, 'Fabricado no Brasil'],
+    [/\bFor all hair types\b/gi, 'Para todos os tipos de cabelo'],
+    [/\bFor dry hair\b/gi, 'Para cabelos secos'],
     [/\bTreatment\b/gi, 'Tratamento'],
     [/\bConditioner\b/gi, 'Condicionador'],
     [/\bMoisturizing\b/gi, 'Hidratante'],
+    [/\bHydrating\b/gi, 'Hidratante'],
     [/\bNourishing\b/gi, 'Nutritivo'],
     [/\bSmoothing\b/gi, 'Alisamento'],
+    [/\bRepairing\b/gi, 'Reparador'],
+    [/\bSunscreen\b/gi, 'Protetor Solar'],
+    [/\bFragrance\b/gi, 'Fragrância'],
+    [/\bLotion\b/gi, 'Loção'],
+    [/\bCream\b/gi, 'Creme'],
+    [/\bLiquid Soap\b/gi, 'Sabonete Líquido'],
+    [/\bSoap\b/gi, 'Sabonete'],
+    [/\bOil\b/gi, 'Óleo'],
+    [/\bSerum\b/gi, 'Sérum'],
     [/\bKeratin\b/gi, 'Queratina'],
     [/\bOrganic\b/gi, 'Orgânico'],
   ];

@@ -35,11 +35,11 @@ export const StatusIndicator: React.FC<StatusIndicatorProps> = ({
           <div className="text-[15px] font-bold leading-tight">{label}</div>
           <div className="text-[12px] opacity-90 mt-0.5">
             {status === 'valid' &&
-              ''}
+              'Este registro encontra-se ativo e vigente dentro do prazo de validade.'}
             {status === 'expired' &&
               'O prazo de validade deste registro encontra-se expirado.'}
             {status === 'suspended' &&
-              '.'}
+              'Este registro encontra-se suspenso temporariamente pela administração.'}
           </div>
         </div>
       </div>

@@ -22,6 +22,7 @@ import {
   formatDateBR,
   getDaysUntilExpiration,
   isExpiringSoon,
+  localizeCountryPTBR,
   normalizeCodeForSearch,
   normalizeTextForSearch,
   type CosmeticProduct,
@@ -544,7 +545,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                             {p.productName}
                           </div>
                           <div className="text-[11px] text-[#666666]">
-                            {p.manufacturerName} · {p.originCountry}
+                            {p.manufacturerName} · {localizeCountryPTBR(p.originCountry)}
                           </div>
                         </div>
                       </div>
@@ -555,7 +556,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <td className="py-2.5 px-3 font-mono text-[12px] tabular-nums whitespace-nowrap">
                       <div>SNB: {p.snbNumber}</div>
                       <div className="text-[11px] text-[#666666]">
-                        Proc: {p.processNumber}
+                        Proc.: {p.processNumber}
                       </div>
                     </td>
                     <td className="py-2.5 px-3 tabular-nums whitespace-nowrap text-[12px]">

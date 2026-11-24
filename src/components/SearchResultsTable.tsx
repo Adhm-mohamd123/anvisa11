@@ -1,6 +1,10 @@
 import React from 'react';
 import { Eye, SearchX, Info } from 'lucide-react';
-import { formatDateBR, type CosmeticProduct } from '../types/cosmetic';
+import {
+  formatDateBR,
+  localizeCountryPTBR,
+  type CosmeticProduct,
+} from '../types/cosmetic';
 import { StatusIndicator } from './StatusIndicator';
 import { ProductThumbnail } from './ProductThumbnail';
 
@@ -136,7 +140,7 @@ export const SearchResultsTable: React.FC<SearchResultsTableProps> = ({
                           {product.productName}
                         </button>
                         <div className="text-[11px] text-[#666666]">
-                          Origem: {product.originCountry}
+                          Origem: {localizeCountryPTBR(product.originCountry)}
                         </div>
                       </div>
                     </div>

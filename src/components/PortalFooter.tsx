@@ -11,27 +11,26 @@ export const PortalFooter: React.FC<PortalFooterProps> = ({ onNavigate }) => {
       <div className="max-w-[1140px] mx-auto pb-6 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
         <ul className="space-y-1.5 text-[13px] text-[#495057] list-disc pl-5">
           <li>
-            
-            {' '}
+            Consulte os{' '}
             <button
               type="button"
               onClick={() => onNavigate('#/sobre')}
               className="text-[#1351b4] hover:underline font-medium cursor-pointer"
             >
-             
-            </button>
-            
+              critérios de consulta e transparência da base
+            </button>{' '}
+            para obter mais informações sobre a situação dos registros.
           </li>
           <li>
-            ,{' '}
+            Para inclusão, atualização ou gerenciamento de produtos, acesse o{' '}
             <button
               type="button"
               onClick={() => onNavigate('#/admin')}
               className="text-[#1351b4] hover:underline font-medium cursor-pointer"
             >
-              
+              Painel Administrativo
             </button>
-            
+            .
           </li>
         </ul>
       </div>

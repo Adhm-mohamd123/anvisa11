@@ -79,8 +79,8 @@ export const ImportModal: React.FC<ImportModalProps> = ({
       '"25351.000001/2026-00"',
       '"SNB-000100-BR"',
       '"25351.100200/2025-10"',
-      '"2026-01-15"',
-      '"2031-01-15"',
+      '"15/01/2026"',
+      '"15/01/2031"',
       '"Laboratório Cosmético Exemplo Ltda"',
       '"Brasil"',
       '"válido"',
@@ -175,7 +175,7 @@ export const ImportModal: React.FC<ImportModalProps> = ({
 
         if (validItems.length === 0) {
           setParseError(
-            `Nenhum registro válido encontrado no arquivo (${invalidCount} linha(s) inválida(s)). Verifique o formato das datas (AAAA-MM-DD) e os campos obrigatórios.`
+            `Nenhum registro válido encontrado no arquivo (${invalidCount} linha(s) inválida(s)). Verifique o formato das datas (DD/MM/AAAA ou AAAA-MM-DD) e os campos obrigatórios.`
           );
           setParsedItems([]);
           return;
